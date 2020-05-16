@@ -1,7 +1,7 @@
 package com.uvarov.sandbox
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.uvarov.sandbox.ui.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
