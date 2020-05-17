@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "97247686887",
+    "firebase_url": "https://sandbox-cddb8.firebaseio.com",
+    "project_id": "sandbox-cddb8",
+    "storage_bucket": "sandbox-cddb8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:97247686887:android:caad4be416bafae1fa7242",
+        "android_client_info": {
+          "package_name": "com.uvarov.sandbox"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "97247686887-jbdjj75mnto9eok6o8thj5prakhhr76q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdDJI728rUrQgrNOFZShYFf4RQOeELeEQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "97247686887-jbdjj75mnto9eok6o8thj5prakhhr76q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

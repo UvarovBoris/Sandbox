@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.google.firebase.firebase-perf'
+apply plugin: 'com.google.gms.google-services'
 apply from: '../versions.gradle'
 
 android {
@@ -49,6 +51,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle"
     implementation "com.jakewharton.timber:timber:$versions.timber"
     implementation "com.facebook.stetho:stetho:$versions.stetho"
+    implementation "com.google.firebase:firebase-perf:$versions.firebasePerformance"
     testImplementation "junit:junit:$versions.junit"
     androidTestImplementation "androidx.test.ext:junit:$versions.androidJunit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$versions.espresso"
