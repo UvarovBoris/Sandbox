@@ -17,11 +17,15 @@ android {
     }
 
     signingConfigs {
+        def releaseKeystorePropertiesFile = project.file("releaseKeystore.properties")
+        def releaseKeystoreProperties = new Properties()
+        releaseKeystoreProperties.load(new FileInputStream(releaseKeystorePropertiesFile))
+
         release {
-            storeFile file('releaseKey.keystore')
-            storePassword 'System.console().readLine("\nKeystore password: ")'
-            keyAlias 'androidkey'
-            keyPassword 'System.console().readLine("\nKey password: ")'
+            storeFile file(releaseKeystoreProperties['storeFile'])
+            storePassword releaseKeystoreProperties['storePassword']
+            keyAlias releaseKeystoreProperties['keyAlias']
+            keyPassword releaseKeystoreProperties['keyPassword']
         }
     }
 
