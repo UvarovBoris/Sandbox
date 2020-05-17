@@ -21,24 +21,24 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    signingConfigs {
-        def releaseKeystorePropertiesFile = project.file("releaseKeystore.properties")
-        def releaseKeystoreProperties = new Properties()
-        releaseKeystoreProperties.load(new FileInputStream(releaseKeystorePropertiesFile))
-
-        release {
-            storeFile file(releaseKeystoreProperties['storeFile'])
-            storePassword releaseKeystoreProperties['storePassword']
-            keyAlias releaseKeystoreProperties['keyAlias']
-            keyPassword releaseKeystoreProperties['keyPassword']
-        }
-    }
+//    signingConfigs {
+//        def releaseKeystorePropertiesFile = project.file("releaseKeystore.properties")
+//        def releaseKeystoreProperties = new Properties()
+//        releaseKeystoreProperties.load(new FileInputStream(releaseKeystorePropertiesFile))
+//
+//        release {
+//            storeFile file(releaseKeystoreProperties['storeFile'])
+//            storePassword releaseKeystoreProperties['storePassword']
+//            keyAlias releaseKeystoreProperties['keyAlias']
+//            keyPassword releaseKeystoreProperties['keyPassword']
+//        }
+//    }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
+            //signingConfig signingConfigs.release
         }
     }
 }
