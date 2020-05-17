@@ -7,6 +7,7 @@ ext {
             timber             : '4.7.1',
             stetho             : '1.5.1',
             firebasePerformance: '19.0.7',
+            firebaseAnalytics  : '17.4.1',
             junit              : '4.12',
             androidJunit       : '1.1.1',
             espresso           : '3.2.0'
