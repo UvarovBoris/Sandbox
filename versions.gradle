@@ -8,6 +8,7 @@ ext {
             stetho             : '1.5.1',
             firebasePerformance: '19.0.7',
             firebaseAnalytics  : '17.4.1',
+            firebaseCrashlytics: '17.0.0',
             junit              : '4.12',
             androidJunit       : '1.1.1',
             espresso           : '3.2.0'

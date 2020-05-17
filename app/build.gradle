@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.firebase.firebase-perf'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
 apply from: '../versions.gradle'
 
 android {
@@ -53,6 +54,7 @@ dependencies {
     implementation "com.facebook.stetho:stetho:$versions.stetho"
     implementation "com.google.firebase:firebase-perf:$versions.firebasePerformance"
     implementation "com.google.firebase:firebase-analytics:$versions.firebaseAnalytics"
+    implementation "com.google.firebase:firebase-crashlytics:$versions.firebaseCrashlytics"
     testImplementation "junit:junit:$versions.junit"
     androidTestImplementation "androidx.test.ext:junit:$versions.androidJunit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$versions.espresso"
