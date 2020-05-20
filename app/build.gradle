@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.firebase.firebase-perf'
 apply plugin: 'com.google.gms.google-services'
@@ -55,6 +56,9 @@ dependencies {
     implementation "com.google.firebase:firebase-perf:$versions.firebasePerformance"
     implementation "com.google.firebase:firebase-analytics:$versions.firebaseAnalytics"
     implementation "com.google.firebase:firebase-crashlytics:$versions.firebaseCrashlytics"
+    implementation "com.google.dagger:dagger:$versions.dagger"
+    kapt "com.google.dagger:dagger-compiler:$versions.dagger"
+
     testImplementation "junit:junit:$versions.junit"
     androidTestImplementation "androidx.test.ext:junit:$versions.androidJunit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$versions.espresso"
