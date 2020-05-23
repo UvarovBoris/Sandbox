@@ -1,4 +1,4 @@
-package com.uvarov.sandbox.ui.main
+package com.uvarov.sandbox.ui.breeds
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,33 +9,33 @@ import androidx.lifecycle.ViewModelProvider
 import com.uvarov.sandbox.R
 import com.uvarov.sandbox.SandboxApplication
 import com.uvarov.sandbox.ViewModelFactory
-import com.uvarov.sandbox.di.main.MainModule
+import com.uvarov.sandbox.di.breeds.BreedsModule
 import javax.inject.Inject
 
 
-class MainFragment : Fragment() {
+class BreedsFragment : Fragment() {
 
     companion object {
-        fun newInstance() = MainFragment()
+        fun newInstance() = BreedsFragment()
     }
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: BreedsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        (activity!!.applicationContext!! as SandboxApplication).appComponent.createMainComponent(MainModule()).inject(this)
+        (activity!!.applicationContext!! as SandboxApplication).appComponent.createMainComponent(BreedsModule()).inject(this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.main_fragment, container, false)
+        return inflater.inflate(R.layout.breeds_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(BreedsViewModel::class.java)
 
         viewModel.requestBreeds()
     }

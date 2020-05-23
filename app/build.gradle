@@ -53,6 +53,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle"
     implementation "com.jakewharton.timber:timber:$versions.timber"
     implementation "com.facebook.stetho:stetho:$versions.stetho"
+    implementation "com.facebook.stetho:stetho-okhttp3:$versions.stetho"
     implementation "com.google.firebase:firebase-perf:$versions.firebasePerformance"
     implementation "com.google.firebase:firebase-analytics:$versions.firebaseAnalytics"
     implementation "com.google.firebase:firebase-crashlytics:$versions.firebaseCrashlytics"

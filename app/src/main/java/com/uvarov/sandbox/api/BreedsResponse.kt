@@ -1,9 +1,8 @@
 package com.uvarov.sandbox.api
 
-import com.google.gson.annotations.SerializedName
+import com.uvarov.sandbox.model.Breed
 
-class BreedsResponse() : BaseResponse() {
+class BreedsResponse : BaseResponse() {
 
-    @SerializedName("message")
-    lateinit var breeds: Map<String, List<String>>
+    lateinit var breeds: List<Breed>
 }

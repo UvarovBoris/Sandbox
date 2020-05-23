@@ -1,7 +1,7 @@
-package com.uvarov.sandbox.di.main
+package com.uvarov.sandbox.di.breeds
 
 import javax.inject.Scope
 
 @Scope
 @Retention(value = AnnotationRetention.RUNTIME)
-annotation class MainScope
+annotation class BreedsScope
