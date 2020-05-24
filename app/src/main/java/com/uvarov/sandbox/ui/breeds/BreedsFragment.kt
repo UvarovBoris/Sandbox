@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.uvarov.sandbox.R
 import com.uvarov.sandbox.SandboxApplication
 import com.uvarov.sandbox.ViewModelFactory
+import com.uvarov.sandbox.databinding.BreedsFragmentBinding
 import com.uvarov.sandbox.di.breeds.BreedsModule
 import javax.inject.Inject
 
@@ -22,6 +22,8 @@ class BreedsFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
+    private lateinit var viewBinding: BreedsFragmentBinding
+
     private lateinit var viewModel: BreedsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +32,8 @@ class BreedsFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.breeds_fragment, container, false)
+        viewBinding = BreedsFragmentBinding.inflate(layoutInflater)
+        return viewBinding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

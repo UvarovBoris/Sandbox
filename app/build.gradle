@@ -30,6 +30,10 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
+    viewBinding {
+        enabled = true
+    }
+
 //    signingConfigs {
 //        def releaseKeystorePropertiesFile = project.file("releaseKeystore.properties")
 //        def releaseKeystoreProperties = new Properties()
