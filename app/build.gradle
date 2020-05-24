@@ -21,6 +21,15 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
 //    signingConfigs {
 //        def releaseKeystorePropertiesFile = project.file("releaseKeystore.properties")
 //        def releaseKeystoreProperties = new Properties()
@@ -61,6 +70,7 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
     implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
     implementation "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+    implementation "androidx.core:core-ktx:$versions.coreKtx"
 
     testImplementation "junit:junit:$versions.junit"
     androidTestImplementation "androidx.test.ext:junit:$versions.androidJunit"

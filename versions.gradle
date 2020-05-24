@@ -11,6 +11,7 @@ ext {
             firebaseCrashlytics: '17.0.0',
             dagger             : '2.27',
             retrofit           : '2.5.0',
+            coreKtx            : '1.2.0',
             junit              : '4.12',
             androidJunit       : '1.1.1',
             espresso           : '3.2.0'
