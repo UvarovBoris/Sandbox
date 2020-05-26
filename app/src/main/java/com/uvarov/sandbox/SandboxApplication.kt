@@ -1,12 +1,12 @@
 package com.uvarov.sandbox
 
-import android.app.Application
+import androidx.multidex.MultiDexApplication
 import com.facebook.stetho.Stetho
 import com.uvarov.sandbox.di.app.AppComponent
 import com.uvarov.sandbox.di.app.DaggerAppComponent
 import com.uvarov.sandbox.timber.TimberInitializer
 
-class SandboxApplication : Application() {
+class SandboxApplication : MultiDexApplication() {
 
     lateinit var appComponent: AppComponent
 

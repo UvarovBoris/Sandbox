@@ -1,4 +1,4 @@
-package com.uvarov.sandbox.ui.breeds
+package com.uvarov.sandbox.ui.breed.detail
 
 import androidx.lifecycle.ViewModel
 import com.uvarov.sandbox.api.BreedsResponse
@@ -8,7 +8,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import timber.log.Timber
 
-class BreedsViewModel constructor(private val dogService: DogService) : ViewModel() {
+class BreedDetailViewModel constructor(private val dogService: DogService) : ViewModel() {
 
     fun requestBreeds() {
         dogService.getBreeds().enqueue(object : Callback<BreedsResponse> {
