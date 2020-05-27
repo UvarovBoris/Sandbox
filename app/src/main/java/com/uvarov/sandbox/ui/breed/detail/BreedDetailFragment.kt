@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import com.uvarov.sandbox.SandboxApplication
 import com.uvarov.sandbox.ViewModelFactory
 import com.uvarov.sandbox.databinding.BreedDetailFragmentBinding
@@ -15,12 +16,10 @@ import javax.inject.Inject
 
 class BreedDetailFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = BreedDetailFragment()
-    }
-
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
+
+    val args: BreedDetailFragmentArgs by navArgs()
 
     private lateinit var viewBinding: BreedDetailFragmentBinding
 
@@ -40,7 +39,7 @@ class BreedDetailFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this, viewModelFactory).get(BreedDetailViewModel::class.java)
 
-        viewModel.requestBreeds()
+        viewModel.requestBreedImages(args.breed)
     }
 
 }

@@ -2,7 +2,4 @@ package com.uvarov.sandbox.api
 
 import com.uvarov.sandbox.model.Breed
 
-class BreedsResponse : BaseResponse() {
-
-    lateinit var breeds: List<Breed>
-}
+class BreedsResponse(var breeds: List<Breed>, status: String) : BaseResponse(status)

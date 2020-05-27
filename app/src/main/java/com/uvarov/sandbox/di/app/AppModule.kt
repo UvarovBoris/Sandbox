@@ -5,8 +5,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.GsonBuilder
 import com.uvarov.sandbox.ViewModelFactory
+import com.uvarov.sandbox.api.BreedImagesResponse
 import com.uvarov.sandbox.api.BreedsResponse
 import com.uvarov.sandbox.api.DogService
+import com.uvarov.sandbox.deserializers.BreedImagesResponseDeserializer
 import com.uvarov.sandbox.deserializers.BreedsResponseDeserializer
 import dagger.Module
 import dagger.Provides
@@ -32,6 +34,7 @@ class AppModule {
 
         val gsonBuilder = GsonBuilder()
         gsonBuilder.registerTypeAdapter(BreedsResponse::class.java, BreedsResponseDeserializer())
+        gsonBuilder.registerTypeAdapter(BreedImagesResponse::class.java, BreedImagesResponseDeserializer())
 
         val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl("https://dog.ceo/api/")

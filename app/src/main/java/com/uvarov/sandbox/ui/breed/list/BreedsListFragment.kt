@@ -16,10 +16,6 @@ import javax.inject.Inject
 
 class BreedsListFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = BreedsListFragment()
-    }
-
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
@@ -41,7 +37,7 @@ class BreedsListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewBinding.message.setOnClickListener {
-            it.findNavController().navigate(BreedsListFragmentDirections.actionBreedsListFragmentToBreedDetailFragment())
+            it.findNavController().navigate(BreedsListFragmentDirections.breedDetailAction("boxer"))
         }
     }
 

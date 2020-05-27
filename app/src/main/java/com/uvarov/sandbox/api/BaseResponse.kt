@@ -1,6 +1,3 @@
 package com.uvarov.sandbox.api
 
-open class BaseResponse {
-
-    lateinit var status: String
-}
+open class BaseResponse(val status: String)

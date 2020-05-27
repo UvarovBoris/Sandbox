@@ -1,7 +1,7 @@
 package com.uvarov.sandbox.ui.breed.detail
 
 import androidx.lifecycle.ViewModel
-import com.uvarov.sandbox.api.BreedsResponse
+import com.uvarov.sandbox.api.BreedImagesResponse
 import com.uvarov.sandbox.api.DogService
 import retrofit2.Call
 import retrofit2.Callback
@@ -10,13 +10,13 @@ import timber.log.Timber
 
 class BreedDetailViewModel constructor(private val dogService: DogService) : ViewModel() {
 
-    fun requestBreeds() {
-        dogService.getBreeds().enqueue(object : Callback<BreedsResponse> {
-            override fun onResponse(call: Call<BreedsResponse>, response: Response<BreedsResponse>) {
+    fun requestBreedImages(breed: String) {
+        dogService.getBreedImages(breed).enqueue(object : Callback<BreedImagesResponse> {
+            override fun onResponse(call: Call<BreedImagesResponse>, response: Response<BreedImagesResponse>) {
                 Timber.e(response.toString())
             }
 
-            override fun onFailure(call: Call<BreedsResponse>, t: Throwable) {
+            override fun onFailure(call: Call<BreedImagesResponse>, t: Throwable) {
                 Timber.e(t)
             }
         })

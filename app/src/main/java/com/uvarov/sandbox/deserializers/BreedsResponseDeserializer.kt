@@ -11,11 +11,10 @@ import java.lang.reflect.Type
 class BreedsResponseDeserializer : JsonDeserializer<BreedsResponse> {
     @Throws(JsonParseException::class)
     override fun deserialize(json: JsonElement, typeOfT: Type?, context: JsonDeserializationContext?): BreedsResponse {
-        val breedsResponse: BreedsResponse = BreedsResponse()
         val root = json.asJsonObject
         val message = root["message"].asJsonObject
-        breedsResponse.breeds = message.entrySet().map { Breed(it.key) }
-        breedsResponse.status = root["status"].asString
-        return breedsResponse
+        val breeds = message.entrySet().map { Breed(it.key) }
+        val status = root["status"].asString
+        return BreedsResponse(breeds, status)
     }
 }
