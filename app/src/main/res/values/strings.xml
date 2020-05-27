@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Sandbox</string>
+
+    <string name="breedImg">Breed image</string>
 </resources>

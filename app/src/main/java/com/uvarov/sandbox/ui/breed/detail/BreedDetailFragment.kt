@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.uvarov.sandbox.SandboxApplication
 import com.uvarov.sandbox.ViewModelFactory
 import com.uvarov.sandbox.databinding.BreedDetailFragmentBinding
@@ -25,6 +27,8 @@ class BreedDetailFragment : Fragment() {
 
     private lateinit var viewModel: BreedDetailViewModel
 
+    private lateinit var breedImagesAdapter: BreedImagesAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         (requireActivity().applicationContext!! as SandboxApplication).appComponent.createBreedDetailComponent(BreedDetailModule()).inject(this)
@@ -32,12 +36,23 @@ class BreedDetailFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         viewBinding = BreedDetailFragmentBinding.inflate(layoutInflater)
+
+        breedImagesAdapter = BreedImagesAdapter()
+
+        viewBinding.breedImagesRV.apply {
+            setHasFixedSize(true)
+            adapter = breedImagesAdapter
+            layoutManager = LinearLayoutManager(context)
+        }
+
         return viewBinding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this, viewModelFactory).get(BreedDetailViewModel::class.java)
+
+        viewModel.breedImagesLD.observe(viewLifecycleOwner, Observer { breedImagesAdapter.breedImages = it })
 
         viewModel.requestBreedImages(args.breed)
     }
