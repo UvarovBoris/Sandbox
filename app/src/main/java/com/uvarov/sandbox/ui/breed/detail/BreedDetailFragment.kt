@@ -42,6 +42,10 @@ class BreedDetailFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
         }
 
+        viewBinding.swipeRefresh.setOnRefreshListener {
+            viewModel.getBreedImages(args.breed)
+        }
+
         return viewBinding.root
     }
 
@@ -49,7 +53,10 @@ class BreedDetailFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this, viewModelFactory).get(BreedDetailViewModel::class.java)
 
-        viewModel.breedImagesLD.observe(viewLifecycleOwner, Observer { breedImagesAdapter.breedImages = it })
+        viewModel.breedImagesLD.observe(viewLifecycleOwner, Observer {
+            viewBinding.swipeRefresh.isRefreshing = false
+            breedImagesAdapter.breedImages = it
+        })
 
         viewModel.getBreedImages(args.breed)
     }

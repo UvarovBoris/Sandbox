@@ -43,6 +43,10 @@ class BreedsListFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
         }
 
+        viewBinding.swipeRefresh.setOnRefreshListener {
+            viewModel.getBreeds()
+        }
+
         return viewBinding.root
     }
 
@@ -50,7 +54,10 @@ class BreedsListFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this, viewModelFactory).get(BreedsListViewModel::class.java)
 
-        viewModel.breedsLD.observe(viewLifecycleOwner, Observer { breedsAdapter.breeds = it })
+        viewModel.breedsLD.observe(viewLifecycleOwner, Observer {
+            viewBinding.swipeRefresh.isRefreshing = false
+            breedsAdapter.breeds = it
+        })
 
         viewModel.getBreeds()
     }

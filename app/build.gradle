@@ -75,6 +75,7 @@ dependencies {
     implementation "com.google.firebase:firebase-analytics:$versions.firebaseAnalytics"
     implementation "com.google.firebase:firebase-crashlytics:$versions.firebaseCrashlytics"
     implementation "com.google.dagger:dagger:$versions.dagger"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$versions.swipeRefresh"
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
     implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
     implementation "com.squareup.retrofit2:converter-gson:$versions.retrofit"
