@@ -52,7 +52,7 @@ class BreedsListFragment : Fragment() {
 
         viewModel.breedsLD.observe(viewLifecycleOwner, Observer { breedsAdapter.breeds = it })
 
-        viewModel.requestBreeds()
+        viewModel.getBreeds()
     }
 
 }

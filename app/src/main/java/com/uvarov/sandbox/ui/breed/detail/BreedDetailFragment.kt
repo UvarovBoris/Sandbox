@@ -51,7 +51,7 @@ class BreedDetailFragment : Fragment() {
 
         viewModel.breedImagesLD.observe(viewLifecycleOwner, Observer { breedImagesAdapter.breedImages = it })
 
-        viewModel.requestBreedImages(args.breed)
+        viewModel.getBreedImages(args.breed)
     }
 
 }
