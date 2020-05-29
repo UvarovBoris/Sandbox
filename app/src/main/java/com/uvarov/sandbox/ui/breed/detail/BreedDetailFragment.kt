@@ -21,12 +21,9 @@ class BreedDetailFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-    val args: BreedDetailFragmentArgs by navArgs()
-
+    private val args: BreedDetailFragmentArgs by navArgs()
     private lateinit var viewBinding: BreedDetailFragmentBinding
-
     private lateinit var viewModel: BreedDetailViewModel
-
     private lateinit var breedImagesAdapter: BreedImagesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {

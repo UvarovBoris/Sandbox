@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.uvarov.sandbox.SandboxApplication
 import com.uvarov.sandbox.ViewModelFactory
 import com.uvarov.sandbox.databinding.BreedsListFragmentBinding
@@ -20,8 +22,8 @@ class BreedsListFragment : Fragment() {
     lateinit var viewModelFactory: ViewModelFactory
 
     private lateinit var viewBinding: BreedsListFragmentBinding
-
     private lateinit var viewModel: BreedsListViewModel
+    private lateinit var breedsAdapter: BreedsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,20 +32,25 @@ class BreedsListFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         viewBinding = BreedsListFragmentBinding.inflate(layoutInflater)
-        return viewBinding.root
-    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        viewBinding.message.setOnClickListener {
-            it.findNavController().navigate(BreedsListFragmentDirections.breedDetailAction("boxer"))
+        breedsAdapter = BreedsAdapter() {
+            findNavController().navigate(BreedsListFragmentDirections.breedDetailAction(it.name))
         }
+
+        viewBinding.breedsRV.apply {
+            setHasFixedSize(true)
+            adapter = breedsAdapter
+            layoutManager = LinearLayoutManager(context)
+        }
+
+        return viewBinding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this, viewModelFactory).get(BreedsListViewModel::class.java)
+
+        viewModel.breedsLD.observe(viewLifecycleOwner, Observer { breedsAdapter.breeds = it })
 
         viewModel.requestBreeds()
     }
