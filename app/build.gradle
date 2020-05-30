@@ -85,7 +85,8 @@ dependencies {
     implementation "com.android.support:multidex:$versions.multidex"
     implementation "androidx.recyclerview:recyclerview:$versions.recyclerView"
     implementation "com.github.bumptech.glide:glide:$versions.glide"
-    annotationProcessor "com.github.bumptech.glide:compiler:$versions.glide"
+    kapt "com.github.bumptech.glide:compiler:$versions.glide"
+    implementation "com.google.android.material:material:$versions.material"
 
     testImplementation "junit:junit:$versions.junit"
     androidTestImplementation "androidx.test.ext:junit:$versions.androidJunit"
