@@ -15,6 +15,7 @@ import com.uvarov.sandbox.ViewModelFactory
 import com.uvarov.sandbox.databinding.BreedDetailFragmentBinding
 import com.uvarov.sandbox.di.breed.detail.BreedDetailModule
 import com.uvarov.sandbox.utils.SingleObserver
+import com.uvarov.sandbox.utils.getThemeColor
 import com.uvarov.sandbox.utils.toastShort
 import javax.inject.Inject
 
@@ -52,6 +53,7 @@ class BreedDetailFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
         }
 
+        viewBinding.swipeRefresh.setColorSchemeColors(requireContext().getThemeColor(R.attr.colorPrimary))
         viewBinding.swipeRefresh.setOnRefreshListener {
             viewModel.getBreedImages(args.breed)
         }
