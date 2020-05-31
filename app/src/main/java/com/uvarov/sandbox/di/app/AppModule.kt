@@ -1,10 +1,12 @@
 package com.uvarov.sandbox.di.app
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.GsonBuilder
 import com.uvarov.sandbox.ViewModelFactory
+import com.uvarov.sandbox.account.AccountManager
 import com.uvarov.sandbox.api.BreedImagesResponse
 import com.uvarov.sandbox.api.BreedsResponse
 import com.uvarov.sandbox.api.DogService
@@ -19,7 +21,7 @@ import javax.inject.Provider
 
 
 @Module
-class AppModule {
+class AppModule(val context: Context) {
 
     @AppScope
     @Provides
@@ -43,5 +45,11 @@ class AppModule {
             .build()
 
         return retrofit.create(DogService::class.java)
+    }
+
+    @AppScope
+    @Provides
+    fun provideAccountManager(): AccountManager {
+        return AccountManager()
     }
 }

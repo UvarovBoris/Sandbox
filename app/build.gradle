@@ -86,6 +86,7 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$versions.glide"
     kapt "com.github.bumptech.glide:compiler:$versions.glide"
     implementation "com.google.android.material:material:$versions.material"
+    implementation "com.google.android.gms:play-services-auth:$versions.playServicesAuth"
 
     testImplementation "junit:junit:$versions.junit"
     androidTestImplementation "androidx.test.ext:junit:$versions.androidJunit"
