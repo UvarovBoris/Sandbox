@@ -33,7 +33,14 @@ class BreedsListFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         viewBinding = BreedsListFragmentBinding.inflate(layoutInflater)
 
-        breedsAdapter = BreedsAdapter() {
+        return viewBinding.root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(BreedsListViewModel::class.java)
+
+        breedsAdapter = BreedsAdapter {
             findNavController().navigate(BreedsListFragmentDirections.breedDetailAction(it.name))
         }
 
@@ -47,19 +54,14 @@ class BreedsListFragment : Fragment() {
             viewModel.getBreeds()
         }
 
-        return viewBinding.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(BreedsListViewModel::class.java)
-
         viewModel.breedsLD.observe(viewLifecycleOwner, Observer {
             viewBinding.swipeRefresh.isRefreshing = false
             breedsAdapter.breeds = it
         })
 
-        viewModel.getBreeds()
+        if (savedInstanceState == null) {
+            viewModel.getBreeds()
+        }
     }
 
 }

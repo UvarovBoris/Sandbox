@@ -34,6 +34,13 @@ class BreedDetailFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         viewBinding = BreedDetailFragmentBinding.inflate(layoutInflater)
 
+        return viewBinding.root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(BreedDetailViewModel::class.java)
+
         breedImagesAdapter = BreedImagesAdapter()
 
         viewBinding.breedImagesRV.apply {
@@ -46,19 +53,14 @@ class BreedDetailFragment : Fragment() {
             viewModel.getBreedImages(args.breed)
         }
 
-        return viewBinding.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(BreedDetailViewModel::class.java)
-
         viewModel.breedImagesLD.observe(viewLifecycleOwner, Observer {
             viewBinding.swipeRefresh.isRefreshing = false
             breedImagesAdapter.breedImages = it
         })
 
-        viewModel.getBreedImages(args.breed)
+        if (savedInstanceState == null) {
+            viewModel.getBreedImages(args.breed)
+        }
     }
 
 }
