@@ -9,10 +9,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.uvarov.sandbox.R
 import com.uvarov.sandbox.SandboxApplication
 import com.uvarov.sandbox.ViewModelFactory
 import com.uvarov.sandbox.databinding.BreedDetailFragmentBinding
 import com.uvarov.sandbox.di.breed.detail.BreedDetailModule
+import com.uvarov.sandbox.utils.SingleObserver
+import com.uvarov.sandbox.utils.toastShort
 import javax.inject.Inject
 
 
@@ -56,6 +59,10 @@ class BreedDetailFragment : Fragment() {
         viewModel.breedImagesLD.observe(viewLifecycleOwner, Observer {
             viewBinding.swipeRefresh.isRefreshing = false
             breedImagesAdapter.breedImages = it
+        })
+        viewModel.breedImagesErrorLD.observe(viewLifecycleOwner, SingleObserver {
+            viewBinding.swipeRefresh.isRefreshing = false
+            requireContext().toastShort(R.string.requestError)
         })
 
         if (savedInstanceState == null) {

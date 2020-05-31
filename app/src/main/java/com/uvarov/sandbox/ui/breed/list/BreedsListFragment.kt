@@ -9,10 +9,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.uvarov.sandbox.R
 import com.uvarov.sandbox.SandboxApplication
 import com.uvarov.sandbox.ViewModelFactory
 import com.uvarov.sandbox.databinding.BreedsListFragmentBinding
 import com.uvarov.sandbox.di.breed.list.BreedsListModule
+import com.uvarov.sandbox.utils.SingleObserver
+import com.uvarov.sandbox.utils.toastShort
 import javax.inject.Inject
 
 
@@ -55,8 +58,12 @@ class BreedsListFragment : Fragment() {
         }
 
         viewModel.breedsLD.observe(viewLifecycleOwner, Observer {
-            viewBinding.swipeRefresh.isRefreshing = false
             breedsAdapter.breeds = it
+            viewBinding.swipeRefresh.isRefreshing = false
+        })
+        viewModel.breedsErrorLD.observe(viewLifecycleOwner, SingleObserver {
+            requireContext().toastShort(R.string.requestError)
+            viewBinding.swipeRefresh.isRefreshing = false
         })
 
         if (savedInstanceState == null) {
