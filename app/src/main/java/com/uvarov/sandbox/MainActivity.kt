@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         (applicationContext as SandboxApplication).appComponent.createMainComponent().inject(this)
 
-        accountManager.logIn(GoogleAccountFactory(GoogleSignIn.getLastSignedInAccount(this)).createAccount())
+        accountManager.login(GoogleAccountFactory(GoogleSignIn.getLastSignedInAccount(this)).createAccount())
 
         setContentView(R.layout.main_activity)
 

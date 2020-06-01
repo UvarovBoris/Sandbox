@@ -1,5 +1,7 @@
 package com.uvarov.sandbox.di.app
 
+import com.uvarov.sandbox.di.account.AccountComponent
+import com.uvarov.sandbox.di.account.AccountModule
 import com.uvarov.sandbox.di.breed.detail.BreedDetailComponent
 import com.uvarov.sandbox.di.breed.detail.BreedDetailModule
 import com.uvarov.sandbox.di.breed.list.BreedsListComponent
@@ -13,11 +15,13 @@ import dagger.Component
 @Component(modules = [AppModule::class])
 interface AppComponent {
 
+    fun createMainComponent(): MainComponent
+
     fun createBreedsListComponent(breedsListModule: BreedsListModule): BreedsListComponent
 
     fun createBreedDetailComponent(breedDetailModule: BreedDetailModule): BreedDetailComponent
 
     fun createLoginComponent(loginModule: LoginModule): LoginComponent
 
-    fun createMainComponent(): MainComponent
+    fun createAccountComponent(accountModule: AccountModule): AccountComponent
 }

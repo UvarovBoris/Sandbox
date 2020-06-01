@@ -3,4 +3,10 @@
 
     <string name="breedImg">Breed image</string>
     <string name="requestError">Request error</string>
+    <string name="account">Account</string>
+    <string name="avatar">Avatar</string>
+    <string name="idField">Id:</string>
+    <string name="nameField">Name:</string>
+    <string name="surnameField">Surname:</string>
+    <string name="logout">Logout</string>
 </resources>

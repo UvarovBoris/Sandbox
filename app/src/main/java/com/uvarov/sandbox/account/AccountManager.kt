@@ -5,14 +5,11 @@ class AccountManager {
     var account: Account? = null
         private set
 
-    val isLoggedIn: Boolean
-        get() = account != null
-
-    fun logIn(account: Account) {
+    fun login(account: Account?) {
         this.account = account
     }
 
-    fun logOut() {
+    fun logout() {
         account = null
     }
 }
