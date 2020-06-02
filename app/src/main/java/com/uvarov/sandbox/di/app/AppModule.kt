@@ -3,7 +3,6 @@ package com.uvarov.sandbox.di.app
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.GsonBuilder
 import com.uvarov.sandbox.ViewModelFactory
 import com.uvarov.sandbox.account.AccountManager
@@ -12,6 +11,8 @@ import com.uvarov.sandbox.api.BreedsResponse
 import com.uvarov.sandbox.api.DogService
 import com.uvarov.sandbox.deserializers.BreedImagesResponseDeserializer
 import com.uvarov.sandbox.deserializers.BreedsResponseDeserializer
+import com.uvarov.sandbox.FlipperInitializer
+import com.uvarov.sandbox.StethoInitializer
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -21,7 +22,7 @@ import javax.inject.Provider
 
 
 @Module
-class AppModule(val context: Context) {
+class AppModule(private val context: Context) {
 
     @AppScope
     @Provides
@@ -32,7 +33,10 @@ class AppModule(val context: Context) {
     @AppScope
     @Provides
     fun provideDogService(): DogService {
-        val okHttpClient: OkHttpClient = OkHttpClient.Builder().addNetworkInterceptor(StethoInterceptor()).build()
+        val okHttpClientBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
+
+        StethoInitializer.initNetworkInterceptor(okHttpClientBuilder)
+        FlipperInitializer.initNetworkInterceptor(okHttpClientBuilder)
 
         val gsonBuilder = GsonBuilder()
         gsonBuilder.registerTypeAdapter(BreedsResponse::class.java, BreedsResponseDeserializer())
@@ -40,7 +44,7 @@ class AppModule(val context: Context) {
 
         val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl("https://dog.ceo/api/")
-            .client(okHttpClient)
+            .client(okHttpClientBuilder.build())
             .addConverterFactory(GsonConverterFactory.create(gsonBuilder.create()))
             .build()
 
