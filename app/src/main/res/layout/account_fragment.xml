@@ -26,7 +26,8 @@
         android:layout_marginTop="@dimen/large"
         android:text="@string/idField"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/avatarImg" />
+        app:layout_constraintTop_toBottomOf="@id/avatarImg"
+        android:layout_marginLeft="@dimen/medium" />
 
     <TextView
         android:id="@+id/idTxt"
@@ -35,7 +36,8 @@
         android:layout_marginStart="@dimen/small"
         app:layout_constraintBaseline_toBaselineOf="@id/idFieldTxt"
         app:layout_constraintStart_toEndOf="@id/idFieldTxt"
-        tools:text="123456789" />
+        tools:text="123456789"
+        android:layout_marginLeft="@dimen/small" />
 
     <TextView
         android:id="@+id/nameFieldTxt"
@@ -45,7 +47,8 @@
         android:layout_marginTop="@dimen/small"
         android:text="@string/nameField"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/idFieldTxt" />
+        app:layout_constraintTop_toBottomOf="@id/idFieldTxt"
+        android:layout_marginLeft="@dimen/medium" />
 
     <TextView
         android:id="@+id/nameTxt"
@@ -54,7 +57,8 @@
         android:layout_marginStart="@dimen/small"
         app:layout_constraintBaseline_toBaselineOf="@id/nameFieldTxt"
         app:layout_constraintStart_toEndOf="@id/nameFieldTxt"
-        tools:text="Boris" />
+        tools:text="Boris"
+        android:layout_marginLeft="@dimen/small" />
 
     <TextView
         android:id="@+id/surnameFieldTxt"
@@ -64,7 +68,8 @@
         android:layout_marginTop="@dimen/small"
         android:text="@string/surnameField"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nameFieldTxt" />
+        app:layout_constraintTop_toBottomOf="@id/nameFieldTxt"
+        android:layout_marginLeft="@dimen/medium" />
 
     <TextView
         android:id="@+id/surnameTxt"
@@ -73,7 +78,8 @@
         android:layout_marginStart="@dimen/small"
         app:layout_constraintBaseline_toBaselineOf="@id/surnameFieldTxt"
         app:layout_constraintStart_toEndOf="@id/surnameFieldTxt"
-        tools:text="Uvarov" />
+        tools:text="Uvarov"
+        android:layout_marginLeft="@dimen/small" />
 
     <Button
         android:id="@+id/logoutBtn"

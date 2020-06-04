@@ -48,10 +48,6 @@ class BreedsListFragment : Fragment() {
             findNavController().navigate(BreedsListFragmentDirections.breedDetailAction(it.name))
         }
 
-        viewBinding.accountBtn.setOnClickListener {
-            findNavController().navigate(BreedsListFragmentDirections.accountAction())
-        }
-
         viewBinding.breedsRV.apply {
             setHasFixedSize(true)
             adapter = breedsAdapter
