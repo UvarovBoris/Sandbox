@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
+    tools:context=".ui.login.LoginFragment">
+
+    <ImageView
+        android:id="@+id/avatarImg"
+        android:layout_width="@dimen/drawerAvatarSize"
+        android:layout_height="@dimen/drawerAvatarSize"
+        android:layout_marginStart="@dimen/medium"
+        android:layout_marginLeft="@dimen/medium"
+        android:layout_marginTop="@dimen/medium"
+        android:contentDescription="@string/avatar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@color/colorPrimary" />
+
+    <TextView
+        android:id="@+id/nameTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/medium"
+        android:layout_marginLeft="@dimen/medium"
+        android:layout_marginTop="@dimen/small"
+        app:layout_constraintStart_toEndOf="@id/avatarImg"
+        app:layout_constraintTop_toTopOf="@id/avatarImg"
+        tools:text="Boris" />
+
+    <TextView
+        android:id="@+id/surnameTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/medium"
+        android:layout_marginLeft="@dimen/medium"
+        android:layout_marginTop="@dimen/small"
+        app:layout_constraintStart_toEndOf="@id/avatarImg"
+        app:layout_constraintTop_toBottomOf="@id/nameTxt"
+        tools:text="Uvarov" />
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/avatarImg"
+        app:menu="@menu/drawer" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

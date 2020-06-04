@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/avatarImg"
-        android:layout_width="@dimen/avatarImageSize"
-        android:layout_height="@dimen/avatarImageSize"
+        android:layout_width="@dimen/avatarSize"
+        android:layout_height="@dimen/avatarSize"
         android:layout_marginTop="@dimen/medium"
         android:contentDescription="@string/avatar"
         app:layout_constraintEnd_toEndOf="parent"

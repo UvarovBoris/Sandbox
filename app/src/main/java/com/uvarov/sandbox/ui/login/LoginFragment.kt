@@ -13,6 +13,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.uvarov.sandbox.MainActivity
 import com.uvarov.sandbox.R
 import com.uvarov.sandbox.SandboxApplication
 import com.uvarov.sandbox.ViewModelFactory
@@ -51,6 +52,8 @@ class LoginFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this, viewModelFactory).get(LoginViewModel::class.java)
 
+        (activity as MainActivity).disableDrawer()
+
         viewBinding.googleLoginBtn.setOnClickListener {
             val gso: GoogleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
             val googleSignInClient: GoogleSignInClient = GoogleSignIn.getClient(requireActivity().applicationContext, gso);
@@ -58,6 +61,7 @@ class LoginFragment : Fragment() {
         }
 
         viewModel.moveBreedsLD.observe(viewLifecycleOwner, SingleObserver {
+            (activity as MainActivity).enableDrawer()
             findNavController().navigate(LoginFragmentDirections.breedsListAction())
         })
     }

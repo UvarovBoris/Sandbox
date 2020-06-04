@@ -6,6 +6,8 @@ import com.uvarov.sandbox.di.breed.detail.BreedDetailComponent
 import com.uvarov.sandbox.di.breed.detail.BreedDetailModule
 import com.uvarov.sandbox.di.breed.list.BreedsListComponent
 import com.uvarov.sandbox.di.breed.list.BreedsListModule
+import com.uvarov.sandbox.di.drawer.DrawerComponent
+import com.uvarov.sandbox.di.drawer.DrawerModule
 import com.uvarov.sandbox.di.login.LoginComponent
 import com.uvarov.sandbox.di.login.LoginModule
 import com.uvarov.sandbox.di.main.MainComponent
@@ -24,4 +26,6 @@ interface AppComponent {
     fun createLoginComponent(loginModule: LoginModule): LoginComponent
 
     fun createAccountComponent(accountModule: AccountModule): AccountComponent
+
+    fun createDrawerComponent(drawerModule: DrawerModule): DrawerComponent
 }

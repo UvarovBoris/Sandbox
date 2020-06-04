@@ -3,6 +3,8 @@ package com.uvarov.sandbox
 import android.os.Bundle
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavGraph
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -34,7 +36,9 @@ class MainActivity : AppCompatActivity() {
         val startDestination: Int = if (accountManager.account != null) R.id.breedsListFragment else R.id.loginFragment
         initNavGraph(navHostFragment, startDestination)
 
-        setupNavView(navHostFragment)
+        navHostFragment.navController.addOnDestinationChangedListener { _, _, _ ->
+            viewBinding.drawerLayout.closeDrawer(GravityCompat.START)
+        }
     }
 
     private fun initNavGraph(navHostFragment: NavHostFragment, @IdRes startDestinationId: Int) {
@@ -44,7 +48,11 @@ class MainActivity : AppCompatActivity() {
         navHostFragment.navController.graph = navGraph
     }
 
-    private fun setupNavView(navHostFragment: NavHostFragment) {
-        viewBinding.navigation.setupWithNavController(navHostFragment.navController)
+    fun disableDrawer() {
+        viewBinding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+    }
+
+    fun enableDrawer() {
+        viewBinding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNDEFINED);
     }
 }

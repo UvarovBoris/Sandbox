@@ -7,5 +7,6 @@
 
     <dimen name="breedItemHeight">50dp</dimen>
     <dimen name="breedImageSize">100dp</dimen>
-    <dimen name="avatarImageSize">150dp</dimen>
+    <dimen name="avatarSize">150dp</dimen>
+    <dimen name="drawerAvatarSize">100dp</dimen>
 </resources>
