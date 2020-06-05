@@ -71,8 +71,9 @@ class LoginFragment : Fragment() {
         if (requestCode == GOOGLE_LOGIN_REQUEST_CODE) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
-                val googleAccount: GoogleSignInAccount? = task.getResult(ApiException::class.java)
-                viewModel.handleLogIn(GoogleAccountFactory(googleAccount).createAccount())
+                task.getResult(ApiException::class.java)?.let {
+                    viewModel.handleLogIn(GoogleAccountFactory(it).createAccount())
+                }
             } catch (e: ApiException) {
                 requireContext().toastShort(R.string.requestError)
                 Timber.e(e)

@@ -3,15 +3,16 @@ package com.uvarov.sandbox
 import android.os.Bundle
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
+
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavGraph
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.uvarov.sandbox.account.AccountManager
 import com.uvarov.sandbox.account.GoogleAccountFactory
 import com.uvarov.sandbox.databinding.MainActivityBinding
+
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -28,17 +29,15 @@ class MainActivity : AppCompatActivity() {
         viewBinding = MainActivityBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
-        accountManager.login(GoogleAccountFactory(GoogleSignIn.getLastSignedInAccount(this)).createAccount())
+        GoogleSignIn.getLastSignedInAccount(this)?.let {
+            accountManager.login(GoogleAccountFactory(it).createAccount())
+        }
 
         val navHostFragment: NavHostFragment = supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
 
         @IdRes
         val startDestination: Int = if (accountManager.account != null) R.id.breedsListFragment else R.id.loginFragment
         initNavGraph(navHostFragment, startDestination)
-
-        navHostFragment.navController.addOnDestinationChangedListener { _, _, _ ->
-            viewBinding.drawerLayout.closeDrawer(GravityCompat.START)
-        }
     }
 
     private fun initNavGraph(navHostFragment: NavHostFragment, @IdRes startDestinationId: Int) {
@@ -54,5 +53,17 @@ class MainActivity : AppCompatActivity() {
 
     fun enableDrawer() {
         viewBinding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNDEFINED);
+    }
+
+    fun isDrawerOpen(): Boolean {
+        return viewBinding.drawerLayout.isDrawerOpen(viewBinding.drawerContainer)
+    }
+
+    fun openDrawer() {
+        viewBinding.drawerLayout.openDrawer(viewBinding.drawerContainer)
+    }
+
+    fun closeDrawer() {
+        viewBinding.drawerLayout.closeDrawer(viewBinding.drawerContainer)
     }
 }

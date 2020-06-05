@@ -87,6 +87,8 @@ dependencies {
     kapt "com.github.bumptech.glide:compiler:$versions.glide"
     implementation "com.google.android.material:material:$versions.material"
     implementation "com.google.android.gms:play-services-auth:$versions.playServicesAuth"
+    implementation "io.reactivex.rxjava3:rxjava:$versions.rxJava"
+
     debugImplementation "com.facebook.soloader:soloader:$versions.soloader"
     debugImplementation "com.facebook.flipper:flipper:$versions.flipper"
     debugImplementation "com.facebook.flipper:flipper-network-plugin:$versions.flipper"

@@ -1,24 +1,25 @@
 package com.uvarov.sandbox.ui.drawer
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.customview.widget.Openable
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
+
+import com.uvarov.sandbox.MainActivity
 import com.uvarov.sandbox.R
 import com.uvarov.sandbox.SandboxApplication
 import com.uvarov.sandbox.ViewModelFactory
 import com.uvarov.sandbox.account.Account
 import com.uvarov.sandbox.databinding.DrawerFragmentBinding
 import com.uvarov.sandbox.di.drawer.DrawerModule
+import com.uvarov.sandbox.utils.setupWithNavController
 import javax.inject.Inject
 
-class DrawerFragment : Fragment() {
+class DrawerFragment : Fragment(), Openable {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -61,5 +62,17 @@ class DrawerFragment : Fragment() {
             viewBinding.nameTxt.text = account.name
             viewBinding.surnameTxt.text = account.surname
         }
+    }
+
+    override fun isOpen(): Boolean {
+        return (activity as MainActivity).isDrawerOpen()
+    }
+
+    override fun open() {
+        (activity as MainActivity).openDrawer()
+    }
+
+    override fun close() {
+        (activity as MainActivity).closeDrawer()
     }
 }
