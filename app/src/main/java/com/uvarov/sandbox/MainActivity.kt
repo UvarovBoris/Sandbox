@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment: NavHostFragment = supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
 
         @IdRes
-        val startDestination: Int = if (accountManager.account != null) R.id.breedsListFragment else R.id.loginFragment
+        val startDestination: Int = if (accountManager.account != null) R.id.breedsNavigation else R.id.loginNavigation
         initNavGraph(navHostFragment, startDestination)
     }
 
