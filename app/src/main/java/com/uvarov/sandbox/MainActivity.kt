@@ -40,6 +40,14 @@ class MainActivity : AppCompatActivity() {
         initNavGraph(navHostFragment, startDestination)
     }
 
+    override fun onBackPressed() {
+        if (isDrawerOpen()) {
+            closeDrawer()
+        } else {
+            super.onBackPressed()
+        }
+    }
+
     private fun initNavGraph(navHostFragment: NavHostFragment, @IdRes startDestinationId: Int) {
         val graphInflater = navHostFragment.navController.navInflater
         val navGraph: NavGraph = graphInflater.inflate(R.navigation.nav_graph)
